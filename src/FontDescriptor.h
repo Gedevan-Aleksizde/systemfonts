@@ -61,7 +61,7 @@ public:
     this->postscriptName = NULL;
     this->family = copyString(family);
     this->style = NULL;
-    this->weight = bold ? FontWeightBold : FontWeightNormal;
+    this->weight = bold ? FontWeightBold : FontWeightUndefined;
     this->width = FontWidthUndefined;
     this->italic = italic;
     this->monospace = false;
@@ -104,23 +104,23 @@ public:
     italic = desc->italic;
     monospace = desc->monospace;
   }
-  
+
   const char* get_path() {
     return path == NULL ? "" : path;
   }
-  
+
   const char* get_psname() {
     return postscriptName == NULL ? "" : postscriptName;
   }
-  
+
   const char* get_family() {
     return family == NULL ? "" : family;
   }
-  
+
   const char* get_style() {
     return style == NULL ? "" : style;
   }
-  
+
   int get_weight() {
     switch (weight) {
     case FontWeightThin: return 1;
@@ -132,12 +132,12 @@ public:
     case FontWeightBold: return 7;
     case FontWeightUltraBold: return 8;
     case FontWeightHeavy: return 9;
-      
+
     case FontWeightUndefined: return 0;
     }
     return 0;
   }
-  
+
   int get_width() {
     switch (width) {
     case FontWidthUltraCondensed: return 1;
@@ -149,7 +149,7 @@ public:
     case FontWidthExpanded: return 7;
     case FontWidthExtraExpanded: return 8;
     case FontWidthUltraExpanded: return 9;
-      
+
     case FontWidthUndefined: return 0;
     }
     return 0;
